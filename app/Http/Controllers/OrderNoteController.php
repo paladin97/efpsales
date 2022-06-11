@@ -110,7 +110,7 @@ class OrderNoteController extends Controller
 
         if ($request->ajax()){
             
-            return ['pageTitle'=> 'nota eliminada'];
+            return ['pageTitle'=> 'nota eliminada.'];
         }
         else {
 
