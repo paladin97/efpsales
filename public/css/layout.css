@@ -1,0 +1,303 @@
+@media (min-width: 1200px) {
+    /* /Resuluciones de 1200px en adelante hasta 1500/ */
+    .container {
+        max-width: 1400px!important;
+    }
+}   
+@media (min-width: 1500px) {
+    /* /Resuluciones de 1500px en adelante hasta 1600/ */
+    .container {
+        max-width: 1450px!important;
+    }
+}
+@media (min-width: 1600px) {
+    /* /Resuluciones de 1600px en adelante hasta 1650/ */
+    .container {
+        max-width: 1480px!important;
+    } 
+}
+@media (min-width: 1650px) {
+    /* /Resuluciones desde 1650/ */
+    .container {
+        max-width: 1550px!important;
+    }
+}
+.nav-pills .nav-link {
+    color: #ffffff!important;
+  }
+  
+.nav-pills .nav-link:not(.active):hover {
+    color: #cfcfcf!important;
+}
+
+.fa-beat {
+    animation:fa-beat 10s ease infinite;
+}
+@keyframes fa-beat {
+    0% {
+        transform:scale(1);
+    }
+    5% {
+        transform:scale(2.25);
+    }
+    20% {
+        transform:scale(1);
+    }
+    30% {
+        transform:scale(1);
+    }
+    35% {
+        transform:scale(3.25);
+    }
+    50% {
+        transform:scale(1);
+    }
+    55% {
+        transform:scale(3.25);
+    }
+    70% {
+        transform:scale(1);
+    }
+}
+
+.bg-dash {
+    background: url(../../../../images/bg-dash.jpg) repeat scroll 0 0 / cover rgba(0, 0, 0, 0) !important;
+}
+
+/*
+|--------------------------------------------------------------------------
+|  Configuración de scrollbar
+|--------------------------------------------------------------------------
+*/
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+/* total width */
+body::-webkit-scrollbar {
+    background-color: #fff;
+    width: 10px;
+    
+}
+
+/* background of the scrollbar except button or resizer */
+body::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+/* scrollbar itself */
+body::-webkit-scrollbar-thumb {
+    background-color: #3c8dbc;
+    border-radius: 16px;
+    border: 2px solid #11247a;  
+}
+/*
+    Scroll dentro de un div
+*/
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+/* total width */
+#div-scroll::-webkit-scrollbar {
+    background-color: #fff;
+    width: 10px;
+    
+}
+
+/* background of the scrollbar except button or resizer */
+#div-scroll::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+/* scrollbar itself */
+#div-scroll::-webkit-scrollbar-thumb {
+    background-color: #3c8dbc;
+    border-radius: 16px;
+    border: 2px solid #11247a;  
+}
+
+/* footer */
+@media (min-width: 768px){
+ .main-footer {
+    margin-left: 0px!important;
+}
+}
+
+/* set button(top and bottom of the scrollbar) */
+body::-webkit-scrollbar-button {
+    display:none;
+}
+
+div.scroll {
+    margin:4px, 4px; 
+    padding:4px; 
+    height: 450px; 
+    overflow-x: hidden; 
+    overflow-x: auto; 
+    text-align:justify; 
+}
+
+/**
+Estilos del datatable
+*/
+table.small-table tr td, table.small-table tr th {
+    font-size: 12px;
+}
+.w-96 {
+    width: 96%!important;
+}
+
+/**
+Para ajustar el vertical align del responsive button
+*/
+/* table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th.dtr-control:before {
+    margin-top: 34px!important;
+} */
+/* Todos los datatable alineados al medio vertical */
+table.dataTable tbody td {
+    vertical-align: middle;
+}
+/**
+Para manejar el estilo del dropZone
+*/
+.dropzone {
+    background: white;
+    border-radius: 5px;
+    border: 2px dashed rgb(0, 135, 247)!important;
+    border-image: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* row color */
+table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
+    background-color: #17a2b8!important;
+}
+
+/* Estilo del Home */
+.text-muted { 
+    font-size: 120% !important;
+}
+.pignose-calendar.pignose-calendar-dark {
+    background-color:#1d5c78!important;
+}
+
+.pignose-calendar {
+    max-width: 100%!important;
+}
+
+.pignose-calendar.pignose-calendar-dark .pignose-calendar-top {
+    background-color:#1d5c78!important;
+}
+
+.pignose-calendar.pignose-calendar-dark .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit a {
+    color: #ffffff!important;
+}
+
+.pignose-calendar.pignose-calendar-dark .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-sun a, .pignose-calendar.pignose-calendar-dark .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-sat a {
+    color: #ff6060!important;
+}
+
+.grey-bg {  
+    background-color: #F5F7FA;
+}
+
+.wrimagecard{	
+    margin-top: 0;
+    /* margin-bottom: 1.5rem; */
+    text-align: left;
+    position: relative;
+    background: #fff;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.wrimagecard .fad, .fab{
+    position: relative;
+    font-size: 70px;
+}
+
+.wrimagecard-topimage_header{
+    padding: 20px;
+}
+
+a.wrimagecard:hover, .wrimagecard-topimage:hover {
+    box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
+}
+
+.wrimagecard-topimage a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.wrimagecard-topimage_title {
+    padding: 20px 24px;
+    height: 80px;
+    padding-bottom: 0.75rem;
+    position: relative;
+}
+
+.wrimagecard-topimage_title > h4 {
+    font-size: 1.1rem !important;
+}
+
+.wrimagecard-topimage a {
+    border-bottom: none;
+    text-decoration: none;
+    color: #525c65;
+    transition: color 0.3s ease;
+}
+
+table.home tbody td {
+    vertical-align: middle;
+}
+
+/* Pignose */
+.pignose-calendar .pignose-calendar-header {
+    font-size: 14px;
+}
+
+/* Stripe */
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #7fbdef3d!important; 
+ }
+
+
+ /* Notification Badge */
+ .notification-badge {
+    font-size: 15px;
+    font-weight: 400;
+    padding: 2px 4px;
+    position: absolute;
+    right: -4px;
+    top: 2px;
+}
+
+/* Hide home icons */
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .mobile-hide {
+        display: none!important;
+    }
+    .width-mobile {
+        width: 95%!important;
+    }
+
+  }
+
+/*Realy centered items datatable*/
+.dt-body-center{
+    text-align: center!important;
+}
+
+/**
+Efecto hover zoom
+*/
+.zoom {
+    transition: transform .2s; 
+    }
+    
+    .zoom:hover {
+    transform: scale(0.9);
+    }
