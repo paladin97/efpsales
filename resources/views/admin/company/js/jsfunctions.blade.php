@@ -113,14 +113,14 @@
                 [ '25 registros','10 registros','50 registros', '100 registros',  'Mostrar Todo' ]
             ],
             buttons: [
-                {
-                    text: '<i id="createNewCompany" class="fad fa-warehouse" data-toggle="tooltip"  title="Crear Empresa"></i>',
-                    className: 'btn btn-secondary bg-lightblue hidden mr-2 rounded',
-                    init: function(api, node, config) {
-                        $(node).removeClass('dt-button')
-                    }
-                    
-                }
+                // {
+                //     title: '',
+                //     text: '&nbsp;<i class="bx bx-plus bx-md" onClick="createNewCompany()" data-ask="2" data-bs-toggle="tooltip"  title="Crear Empresa"></i>',
+                //     className: 'btn btn-secondary bg-lightblue hidden me-2 p-1 rounded-end',
+                //     action: function(e, dt, node, config) {
+                //         $(node).removeClass('dt-button');
+                //     }
+                // }
             ],
             order: [[ 3, 'asc' ]],
             language: {
@@ -198,7 +198,7 @@
             $('#saveBtn').val("create-product");
             $('#company_id').val('');
             $('#companyForm').trigger("reset");
-            $('.modal-title').html("Nueva Empresa");
+            $('#modalHeadingCompany').html("Nueva Empresa");
             $('#ajaxModel').modal('show');
         });
 
@@ -206,7 +206,7 @@
             $(".text-danger").text("");
             var company_id = $(this).data('id');
             $.get("{{route('company.index') }}" +'/' + company_id +'/edit', function (data) {
-                $('.modal-title').html("Editar Empresa");
+                $('#modalHeadingCompany').html("Editar Empresa");
                 $('#saveBtn').val("edit-company");
                 $('#ajaxModel').modal('show');
                 $('#company_id').val(data.id);

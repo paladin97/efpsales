@@ -587,7 +587,7 @@
 										</div>                                                 
 									</div>
                                 </div>
-                                @if(Auth::user()->hasRole('admin'))	
+                                @if(Auth::user()->hasRole('administrador'))	
                                     <div class="row">
                                         <div class="col-sm-12"> 
                                             <label for="name" class="mb-n1">Observaciones de Gestión</label>

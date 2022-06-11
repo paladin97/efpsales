@@ -32,27 +32,7 @@
                         <div class="form-group">
                             <label for="name" class="mb-n1">Curso</label>
                             <select class="form-control form-control-sm select_list_filter" id="course_filter" name="course_filter[]" multiple>
-                                @php
-
-                                $courses = "";
-
-                                if(Auth::user()->hasRole('superadmin')){
-
-                                    $courses = App\Models\Course::all()->sortBy('name');
-
-                                }else{   
-
-                                    $courses = App\Models\Course::from('courses as c')
-                                    ->whereIn('c.company_id',Auth::user()->companies->pluck('id'))
-                                    ->select('c.*')
-                                    ->get()->sortBy('name');
-                                    
-
-                                }
-
-                                @endphp
-
-                                @foreach($courses as $cData)
+                                @foreach(App\Models\Course::all() as $cData)
                                     <option value="{{$cData->id}}">{{$cData->name}}</option>
                                 @endforeach
                             </select>
@@ -71,33 +51,6 @@
                     <div class="form-group">
                         <label for="name" class="mb-n1">Contrato</label>
                         <select class="form-control form-control-sm select_list_filter" id="cert_contract_filter" name="cert_contract_filter[]" multiple>
-                            
-                            @if(Auth::user()->hasRole('comercial')){
-
-                                @foreach(App\Models\Contract::from('contracts as c')
-                                ->leftJoin('people_inf as pi','c.person_id','=','pi.id')
-                                ->whereContractStatusId(3)
-                                ->where('c.agent_id','=',Auth::user()->id)
-                                ->select('c.*', 'pi.name as student_name','pi.last_name as student_last_name')
-                                ->orderBy('enrollment_number','DESC')
-                                ->get() as $cData)
-                                <option value="{{$cData->id}}">{{$cData->enrollment_number}} - {{$cData->student_name}}, {{$cData->student_last_name}} </option>
-                                @endforeach
-                            }
-                            @elseif (Auth::user()->hasRole('admin')){
-                               
-                               @foreach(App\Models\Contract::from('contracts as c')
-                                ->leftJoin('people_inf as pi','c.person_id','=','pi.id')
-                                ->whereContractStatusId(3)
-                                ->whereIn('pi.company_id',Auth::user()->companies->pluck('id'))
-                                ->select('c.*', 'pi.name as student_name','pi.last_name as student_last_name')
-                                ->orderBy('enrollment_number','DESC')
-                                ->get() as $cData)
-                                <option value="{{$cData->id}}">{{$cData->enrollment_number}} - {{$cData->student_name}}, {{$cData->student_last_name}} </option>
-                                @endforeach
-
-                            }
-                            @else
                             @foreach(App\Models\Contract::from('contracts as c')
                                                 ->leftJoin('people_inf as pi','c.person_id','=','pi.id')
                                                 ->whereContractStatusId(3)
@@ -106,7 +59,6 @@
                                                 ->get() as $cData)
                                 <option value="{{$cData->id}}">{{$cData->enrollment_number}} - {{$cData->student_name}}, {{$cData->student_last_name}} </option>
                             @endforeach
-                            @endif
                         </select>
                     </div>
                 </div>

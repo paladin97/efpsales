@@ -160,7 +160,7 @@
                             <p class="text-red" style="font-size:70%">*(Solo si selecciona Nulo)</p>
                         </div>
                     </div>
-                    @if(Auth::user()->hasRole('admin'))                             
+                    @if(Auth::user()->hasRole('administrador'))                             
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Comercial</label>
@@ -432,7 +432,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if(Auth::user()->hasRole('admin'))
+                        @if(Auth::user()->hasRole('administrador'))
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-group">
@@ -633,7 +633,7 @@
                                     <div class="col-sm-12">
                                         <select  style="width:100%;" class="form-control select_list" id="leads_status_list" name="leads_status_list[]">
                                             <option value="">Seleccione una estado</option>
-                                            @if(Auth::user()->hasRole('admin'))
+                                            @if(Auth::user()->hasRole('administrador'))
                                                 @foreach(App\Models\LeadStatus::all()->sortBy('name') as $cData)
                                                     <option value="{{$cData->id}}">{{$cData->name}}</option>
                                                 @endforeach
@@ -1530,7 +1530,7 @@
 										</div>                                                 
 									</div>
                                 </div>
-                                @if(Auth::user()->hasRole('admin'))	
+                                @if(Auth::user()->hasRole('administrador'))	
                                     <div class="row">
                                         <div class="col-sm-12"> 
                                             <label for="name" class="col-sm-12 control-label">Observaciones de Gestión</label>
@@ -1678,7 +1678,7 @@
                                     
                                 '</td>'+
                             '</tr>';
-							@if(Auth::user()->hasRole('admin'))							
+							@if(Auth::user()->hasRole('administrador'))							
                                 format += ''+
 									'<tr>'+
 										'<td><b>Fecha recepción: </b>'+ dt_reception +'</td>'+
@@ -2411,7 +2411,7 @@ return format;
             },
             drawCallback: function( settings ) {
                 var column = table.column(13); 
-                @if(Auth::user()->hasRole('admin'))
+                @if(Auth::user()->hasRole('administrador'))
                     column.visible(true);
                 @endif 
                 var column2 = table.column(12); 
@@ -2461,7 +2461,7 @@ return format;
             // console.log($("#dt_assignment_from").val());
             $('.data-table').DataTable().draw(true);
         });
-        @if(Auth::user()->hasRole('admin'))
+        @if(Auth::user()->hasRole('administrador'))
             $("div.toolbar").html(
                         '<p></p>'+
                         '<ul style="padding-inline-start:0px">'+
@@ -2596,7 +2596,7 @@ return format;
                 ],
                 drawCallback: function( settings ) {
                     var column = table_notes.column(6);
-                    @if(Auth::user()->hasRole('admin'))
+                    @if(Auth::user()->hasRole('administrador'))
                         column.visible(true);
                     @endif
                 },
@@ -2677,7 +2677,7 @@ return format;
                     $("#countries_list").data('select2').trigger('select', {
                             data: {"id": data[0].country_id, 'text':data[0].country_name}
                     });
-                    @if(Auth::user()->hasRole('admin'))
+                    @if(Auth::user()->hasRole('administrador'))
                         // $('#dt_reception').attr('max', maxDate);
                         $("#dt_assignment_edit").val(moment(data[0].dt_assignment).format('YYYY-MM-DDTHH:mm:ss'));
                         $("#dt_last_update").val(moment(data[0].dt_last_update).format('YYYY-MM-DDTHH:mm:ss'));
@@ -2934,7 +2934,7 @@ return format;
                     ],
                     drawCallback: function( settings ) {
                         var column = table_notes.column(6);
-                        @if(Auth::user()->hasRole('admin'))
+                        @if(Auth::user()->hasRole('administrador'))
                             column.visible(true);
                         @endif
                     },

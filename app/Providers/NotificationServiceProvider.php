@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\{User,Contract,Lead,EventMaster};
+use App\Models\{User,Contract,Lead,EventMaster,Notify};
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use DataTables,Auth,Redirect,Response,Config,DB,Validator;
@@ -56,9 +56,16 @@ class NotificationServiceProvider extends ServiceProvider
                                 ->groupBy('cs.id');
         // dd($queryCertificate->get());
         //<a href="javascript" class="dropdown-item dropdown-footer">Ver Todas Las Notificaciones</a>
+
+       
+        
         
         $data = [$queryLeads, $queryContracts, $queryEvent, $queryCertificate];
         // dd($data[0]);
+
+        
+
+
         View::share('notificationCenter', $data);
         
     }

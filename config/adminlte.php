@@ -242,6 +242,14 @@ return [
 
     'menu' => [
         [
+            'text'        => 'Chats',
+            'icon' => 'fad fa-table',
+            'url'         => 'indexchat',
+            // 'icon'        => 'far fa-fw fa-file',
+            // 'label'       => 4,
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'Tablero',
             'icon' => 'fad fa-table',
             'url'         => 'home',

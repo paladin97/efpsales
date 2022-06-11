@@ -81,20 +81,6 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link ">
-              <i class="nav-icon fad fa-book"></i>
-              <p>Editorial<i class="fad  fa-angle-right right"></i></p>
-            </a>
-            <ul class="nav nav-treeview ml-3">
-              <li class="nav-item">
-                <a href="{{ route('order.index') }}" class="nav-link">
-                  <i class="fad fa-toggle-on"></i>
-                  <p>Administrar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link ">
               <i class="nav-icon fad fa-users-class"></i>
               <p>Cursos<i class="fad  fa-angle-right right"></i></p>
             </a>

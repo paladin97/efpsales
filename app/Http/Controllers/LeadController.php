@@ -72,6 +72,7 @@ class LeadController extends Controller
                          ->leftJoin('lead_types as lt', 'le.lead_type_id', '=','lt.id')
                          ->leftJoin('users as us', 'le.agent_id', '=','us.id')
                          ->leftJoin('people_inf as pi', 'pi.id', '=','us.person_id')
+                         ->whereIn('pi.company_id',$companies->pluck('id'))
                          ->leftJoin('users as us2', 'le.prev_agent_id', '=','us2.id')
                          ->leftJoin('lead_origins as lo','le.leads_origin_id','=','lo.id')
                          ->leftJoin('lead_origin_types as lot','lo.lead_origin_type_id','=','lot.id')
@@ -87,37 +88,9 @@ class LeadController extends Controller
                                  ,'lt.name as lead_type_name','ls.hexa_color as hexa_color'
                                  ,'lo.name as lead_origins_name','us2.name as prev_agent_name'
                                 ,DB::raw('CONCAT(le.student_first_name, " ", le.student_last_name) as full_name'));
-
-                 }else if($user->hasRole('admin')){
-
-                    $lead = Lead::from('leads as le')
-                                 ->leftJoin('courses as crse','le.course_id','=','crse.id')
-                                 ->leftJoin('course_areas as crar','crse.area_id','=','crar.id')
-                                 ->leftJoin('provinces as prov', 'le.province_id', '=', 'prov.id')
-                                 ->leftJoin('countries as cntr', 'le.country_id','=','cntr.id')
-                                 ->leftJoin('lead_status as ls', 'le.lead_status_id', '=','ls.id')
-                                 ->leftJoin('lead_sub_status as lss', 'le.lead_sub_status_id', '=','lss.id')
-                                 ->leftJoin('users as us', 'le.agent_id', '=','us.id')
-                                 ->leftJoin('users as us2', 'le.prev_agent_id', '=','us2.id')
-                                 ->leftJoin('lead_origins as lo', 'le.leads_origin_id','=','lo.id')
-                                 ->leftJoin('lead_origin_types as lot','lo.lead_origin_type_id','=','lot.id')
-                                 ->leftJoin('people_inf as pi', 'us.person_id', '=','pi.id')
-                                 ->whereIn('pi.company_id',$companies->pluck('id'))
-                                 ->WhereIn('le.course_id',$courses_list_filter)
-                                 ->WhereIn('le.province_id',$provinces_list_filter)
-                                 ->WhereIn('le.lead_status_id',$lead_status_filter)
-                                 ->WhereIn('lo.id',$lead_origin_filter)
-                                 // ->whereBetween('le.dt_assignment', [$dt_assignment_from, $dt_assignment_to])
-                                 ->select('le.*','crse.id as course_id','crse.name as course_name','pi.name as emp_name','crar.name as area_name','crse.dossier_path as dossier_path'
-                                     ,'prov.name as province_name', 'cntr.name as country_name'
-                                     ,'lss.name as lead_sub_status_name','ls.color_class as bg_color','lss.color_class as bg_color_sub'
-                                     ,'ls.name as lead_status_name', 'us.name as agent_name','ls.hexa_color as hexa_color'
-                                     ,'lo.name as lead_origins_name','us2.name as prev_agent_name'
-                                     ,DB::raw('CONCAT(le.student_first_name, " ", le.student_last_name) as full_name'));
-
                  }else{
                      $lead = Lead::from('leads as le')
-                                 ->where('agent_id','=',$user->id) //comercial
+                                 ->where('agent_id','=',$user->id)
                                  ->leftJoin('courses as crse','le.course_id','=','crse.id')
                                  ->leftJoin('course_areas as crar','crse.area_id','=','crar.id')
                                  ->leftJoin('provinces as prov', 'le.province_id', '=', 'prov.id')

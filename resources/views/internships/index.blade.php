@@ -59,27 +59,7 @@
                         <div class="form-group">
                             <label for="name" class="mb-n1">Curso</label>
                             <select class="form-control form-control-sm select_list_filter" id="services_list_filter" name="services_list_filter[]" multiple>
-                                @php
-
-                                $courses = "";
-
-                                if(Auth::user()->hasRole('superadmin')){
-
-                                    $courses = App\Models\Course::all()->sortBy('name');
-
-                                }else{   
-
-                                    $courses = App\Models\Course::from('courses as c')
-                                    ->whereIn('c.company_id',Auth::user()->companies->pluck('id'))
-                                    ->select('c.*')
-                                    ->get()->sortBy('name');
-                                    
-
-                                }
-
-                                @endphp
-
-                                @foreach($courses as $cData)
+                                @foreach(App\Models\Course::all() as $cData)
                                     <option value="{{$cData->id}}">{{$cData->name}}</option>
                                 @endforeach
                             </select>

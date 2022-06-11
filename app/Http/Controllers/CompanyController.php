@@ -76,7 +76,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-       return view('admin.company.modals.company_crud');
+       
     }
     /**
      * Massive Delete
