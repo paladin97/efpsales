@@ -11,8 +11,9 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array
      */
-    protected $except = [
-        'sendmessage','loadchat'
 
+    protected $addHttpCookie = true;
+    protected $except = [
+        'order'
     ];
 }

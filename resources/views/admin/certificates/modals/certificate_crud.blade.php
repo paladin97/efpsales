@@ -15,7 +15,20 @@
                             <div class="form-group">
                                 <label for="name" class="mb-n1">Contrato <label class="text-red">(*)</label></label>
                                 <select style="width:100%;" class="form-control form-control-sm select_list" id="gencert_contract" name="gencert_contract">
-                                    <option value="">Matrícula</option>
+                                         <option value="">Matrícula</option>
+                                    @if(Auth::user()->hasRole('admin')){
+                                        @foreach(App\Models\Contract::from('contracts as c')
+                                        ->leftJoin('people_inf as pi','c.person_id','=','pi.id')
+                                        ->leftJoin('courses as crse','c.course_id','=','crse.id')
+                                        ->whereContractStatusId(3)
+                                        ->whereIn('pi.company_id',Auth::user()->companies->pluck('id'))
+                                        ->orderBy('enrollment_number','DESC')
+                                        ->select('c.*','pi.name as name','pi.last_name as last_name','crse.name as crse_name')
+                                        ->get() as $cData)
+                                        <option value="{{$cData->id}}">{{$cData->name}}, {{$cData->last_name}} ({{$cData->enrollment_number}} - {{$cData->crse_name}})</option>
+                                        @endforeach  
+                                    }
+                                    @else
                                     @foreach(App\Models\Contract::from('contracts as c')
                                                                     ->leftJoin('people_inf as pi','c.person_id','=','pi.id')
                                                                     ->leftJoin('courses as crse','c.course_id','=','crse.id')
@@ -24,7 +37,8 @@
                                                                     ->select('c.*','pi.name as name','pi.last_name as last_name','crse.name as crse_name')
                                                                     ->get() as $cData)
                                     <option value="{{$cData->id}}">{{$cData->name}}, {{$cData->last_name}} ({{$cData->enrollment_number}} - {{$cData->crse_name}})</option>
-                                @endforeach
+                                    @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>

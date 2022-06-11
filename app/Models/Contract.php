@@ -25,4 +25,9 @@ class Contract extends Model
                             'dt_approved','dt_paid','client_ip','comercial_ip','contract_status_id','validity','accept_communications',
                             'payer_ip','dt_approved_payer','dt_opening','dt_opening_payer','signature_path','signature_path_payer',
                             'accept_thirdp_com','accept_sepa','enroll_mail','created_at','updated_at','user_classroom','pass_classroom','teacher_id']; 
+
+     public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }                        
 }

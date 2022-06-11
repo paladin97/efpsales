@@ -255,12 +255,15 @@
             }
             $(this).toggleClass('selected');
         } );
+
         $('#createNewUser').click(function () {
             $('#saveBtn').val("create-product");
+            $('#saveBtn').attr('id',"save");
             $('#user_id').val('');
             $('#person_id').val('');
             $('#role_id').val('');
             $('#userForm').trigger("reset");
+            $('#userForm').attr('action', "{{ route('user.store') }}")
             //reset los campos select2
             $(".select2-hidden-accessible").val([]).trigger("change");
             //fin reset
@@ -268,8 +271,11 @@
             $('#ajaxModel').modal('show');
         });
 
+    
+
         $('body').on('click', '.editUser', function () {
             $(".text-danger").text("");
+            // $('#save').attr('id',"saveBtn");
             var user_id = $(this).data('id');
             $.get("{{route('user.index') }}" +'/' + user_id +'/edit', function (dataux) {
                 let data = dataux[0];
@@ -312,10 +318,13 @@
             })
         });
 
-        $('#saveBtn').click(function (e) {
+/* 
+        $('#save').click(function (e) {
             e.preventDefault();
+
+            alert("Hola");
             $(this).html('Enviando..');
-            var formData = new FormData($('#userForm')[0]);
+             var formData = new FormData($('#userForm')[0]);
             $.ajax({ 
                 data: formData,      
            url: "{{ route('user.store') }}",
@@ -339,8 +348,8 @@
                         $('#saveBtn').html('Guardar Cambios');
                   }
                 }
-            });
-        });
+            }); 
+        }); */
 
         $('#bulk_delete').click(function(){
             var id = [];

@@ -194,6 +194,19 @@
         }
     });
 
+    $("#material_list").change(function () {  //by Robert
+        
+        if($("#material_list").val() == 1){
+
+            $("#order_div").removeClass('d-none');
+
+        }
+        else{
+            
+            $("#order_div").addClass('d-none');
+        }
+    });
+
 
 
     //Para los medios de pago

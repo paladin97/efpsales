@@ -8,10 +8,11 @@
                 </button>           
             </div>     
             <div class="modal-body">    
-                <form id="userForm" name="userForm" class="form-horizontal" enctype="multipart/form-data">   
-                    <input type="hidden" name="user_id" id="user_id">
+                <form id="userForm" name="userForm" class="form-horizontal" method="POST" action="{{route('user.store')}}">  
+                     {!!csrf_field() !!}
+                    {{-- <input type="hidden" name="user_id" id="user_id">
                     <input type="hidden" name="user_role_id" id="user_role_id">
-                    <input type="hidden" name="person_id" id="person_id">
+                    <input type="hidden" name="person_id" id="person_id"> --}}
                     <div class="row mt-n2">
                         <div class="col-sm-4">
                             <div class="form-group">
@@ -68,11 +69,12 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row mt-n2">
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="name" class="mb-n1">Rol <label class="text-red">(*)</label></label>
-                                <select style="width:100%;" class="form-control form-control-sm list_select"id="user_role" name="user_role" required="">
+                                <select style="width:100%;" class="form-control form-control-sm list_select"id="role_id" name="role" required="">
                                     @foreach(App\Models\Role::all() as $cData)
                                     <option value="{{$cData->id}}">{{$cData->slug}}</option>
                                     @endforeach
@@ -97,6 +99,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn bg-lightblue" value="Insertar">
+                        {{--  <button type="submit" class="btn bg-lightblue" id="saveBtn" value="create-user"><span>Guardar Cambios</span></button> --}}
+                         <button type="button" class="btn btn-danger" data-dismiss="modal"><span>Cancelar</span></button>
+                       
+                             {{-- <div class="alert alert-dismissible" style="display: none; background-color: green;">
+                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                 <div id="alert_message_lead" align="center" style="color:white;"></div>
+                             </div> --}}
+                     </div>
+                    
                 </form>
             </div>
             <p class="col-sm-12 text-xs mt-3"><i class="fas fa-exclamation-triangle fa-xs text-red"></i><span class="text-red text-bold">Información</span>. Todos los campos marcados con <label class="text-red">(*)</label> son obligatorios.</p>
@@ -105,15 +118,7 @@
 
                         </ol>
                     </small>
-            <div class="modal-footer">
-                <button type="submit" class="btn bg-lightblue" id="saveBtn" value="create-user"><span>Guardar Cambios</span></button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal"><span>Cancelar</span></button>
-                <p>
-                    <div class="alert alert-dismissible" style="display: none; background-color: green;">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <div id="alert_message_lead" align="center" style="color:white;"></div>
-                    </div>
-            </div>
+            
         </div>
     </div>
 </div>

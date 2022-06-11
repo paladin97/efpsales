@@ -23,7 +23,27 @@
                                 <label for="name" class="mb-n1">Curso <label class="text-red">(*)</label></label>
                                 <select style="width:100%;" class="form-control form-control-sm select_list" id="modal_courses_list" name="modal_courses_list">
                                     <option value="">Seleccione un servicio</option>
-                                    @foreach(App\Models\Course::all()->sortBy('name') as $cData)
+                                    @php
+
+                                    $courses = "";
+
+                                    if(Auth::user()->hasRole('superadmin')){
+
+                                        $courses = App\Models\Course::all()->sortBy('name');
+
+                                    }else{   
+
+                                        $courses = App\Models\Course::from('courses as c')
+                                        ->whereIn('c.company_id',Auth::user()->companies->pluck('id'))
+                                        ->select('c.*')
+                                        ->get()->sortBy('name');
+                                        
+ 
+                                    }
+
+                                    @endphp
+
+                                    @foreach($courses as $cData)
                                         <option value="{{$cData->id}}">{{$cData->name}}</option>
                                     @endforeach
                                 </select>
